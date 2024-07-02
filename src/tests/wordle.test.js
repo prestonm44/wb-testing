@@ -43,4 +43,22 @@ describe('constructing a new Wordle game', () => {
         const wordle = new Wordle();
         expect(wordle.word).toBe('APPLE')
     })
+
+    test('sets the status of a correct letter to CORRECT', () => {
+        const wordle = new Wordle();
+        const guess = wordle.buildGuessFromWord('A____');
+        expect(guess[0].status).toBE('CORRECT')
+    })
+
+    test('sets the status of a present letter to PRESENT', () => {
+        const wordle = new Wordle();
+        const guess = wordle.buildGuessFromWord('E____');
+        expect(guess[0].status).toBE('PRESENT')
+    })
+
+    test('sets the status of an absent letter to ABSENT', () => {
+        const wordle = new Wordle();
+        const guess = wordle.buildGuessFromWord('Z____')
+        expect(guess[0].status).toBe('ABSENT')
+    })
 })
